@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
  * @description
  */
 @RestController
-@RequestMapping("/payment")
+@RequestMapping("/provider/payment")
 @Slf4j
 public class PaymentController {
 
@@ -31,7 +31,7 @@ public class PaymentController {
     }
 
     @PostMapping("/add")
-    public CommonResult addPayment( Payment payment) {
+    public CommonResult addPayment(@RequestBody Payment payment) {
         payment = paymentService.addPayment(payment);
 
         return new CommonResult(0x10000L, "处理成功", payment);
