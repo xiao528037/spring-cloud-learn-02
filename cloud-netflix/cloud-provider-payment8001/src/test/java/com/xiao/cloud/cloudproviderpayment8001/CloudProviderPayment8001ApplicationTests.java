@@ -1,10 +1,10 @@
-package com.xiao.cloud.netflix.cloudnetflix;
+package com.xiao.cloud.cloudproviderpayment8001;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CloudNetflixApplicationTests {
+class CloudProviderPayment8001ApplicationTests {
 
 	@Test
 	void contextLoads() {
