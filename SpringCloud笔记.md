@@ -26,3 +26,7 @@
 6. 服务总线
    - <font color='pink'>Bus不推荐</font>
    - <font color='green'>Nacos</font>
+
+## 遇到的问题
+> 1. 统一返回时，出现空JSON，没有设置GET/SET方法导致
+> 2. 
