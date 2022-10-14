@@ -26,7 +26,8 @@ public class OrderController {
 
     @GetMapping("/get/{id}")
     public CommonResult<Payment> selectById(@PathVariable("id") Long id) {
-        return restTemplate.getForObject(PAYMENT_URL + "/payment/get/" + id, CommonResult.class);
+        log.info("1111");
+        return restTemplate.getForObject(PAYMENT_URL + "/provider/payment/get/" + id, CommonResult.class);
     }
 
     @PostMapping("/add")

@@ -29,4 +29,5 @@
 
 ## 遇到的问题
 > 1. 统一返回时，出现空JSON，没有设置GET/SET方法导致
-> 2. 
+> 2. JRebel不自动加载的问题
+> ![img.png](image/img.png)
