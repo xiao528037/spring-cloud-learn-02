@@ -8,17 +8,17 @@
         <version>netflix-v1.0</version>
     </parent>
     <groupId>com.xiao.cloud</groupId>
-    <artifactId>cloud-consumer-oder80</artifactId>
+    <artifactId>cloud-eureka-server7001</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>cloud-consumer-oder80</name>
-    <description>cloud-consumer-oder80</description>
+    <name>cloud-eureka-server7001</name>
+    <description>cloud-eureka-server7001</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -26,26 +26,30 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.xiao.cloud</groupId>
-            <artifactId>cloud-common</artifactId>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
+
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.5.4</version>
             </plugin>
         </plugins>
     </build>
