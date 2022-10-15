@@ -3,9 +3,14 @@ server:
 
 eureka:
   instance:
-    hostname: eureka_node2
+    hostname: eureka-server-7001
   client:
     register-with-eureka: false
     fetch-registry: false
     service-url:
       defaultZone: http://eureka7001.local:7001/eureka/
+  server:
+    # 关闭Eureka Server保护机制
+    enable-self-preservation: false
+    # 配置心跳间隔时间为2秒
+    eviction-interval-timer-in-ms: 2000
