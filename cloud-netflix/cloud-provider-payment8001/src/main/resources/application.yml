@@ -2,16 +2,13 @@ server:
   port: 8001
 spring:
   application:
-    name: provider-payment-8001
+    name: provider-payment-service
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://${database.ip}:3306/cloud?useUnicode=true&serverTimezone=Asia/Shanghai&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&connectionCollation=utf8mb4_general_ci&uerSSL=false
     username: root
     password: xiaojiebin
     driver-class-name: com.mysql.cj.jdbc.Driver
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
   jackson:
     default-property-inclusion: non_null
 database:
@@ -20,10 +17,12 @@ database:
 
 #  spring  cloud 相关配置
 eureka:
+  instance:
+    instance-id: payment8001
   client:
     #表示是否将自己注册进Eurekaserver默认为true。
     register-with-eureka: true
     #是否从EurekaServer抓取已有的注册信息，默认为true。单节点无所谓，集群必须设置为true才能配合ribbon使用负载均衡
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:7001/eureka
+      defaultZone: http://eureka7001.local:7001/eureka,http://eureka7002.local:7002/eureka

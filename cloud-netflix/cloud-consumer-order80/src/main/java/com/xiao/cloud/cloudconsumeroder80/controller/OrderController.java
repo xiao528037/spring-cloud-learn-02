@@ -17,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 public class OrderController {
 
-    private static final String PAYMENT_URL = "http://localhost:8001";
+    private static final String PAYMENT_URL = "http://PROVIDER-PAYMENT-SERVICE";
     private final RestTemplate restTemplate;
 
     public OrderController(RestTemplate restTemplate) {
@@ -26,7 +26,6 @@ public class OrderController {
 
     @GetMapping("/get/{id}")
     public CommonResult<Payment> selectById(@PathVariable("id") Long id) {
-        log.info("{} ","?????????????????????????????????????");
         return restTemplate.getForObject(PAYMENT_URL + "/provider/payment/get/" + id, CommonResult.class);
     }
 

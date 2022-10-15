@@ -36,9 +36,17 @@ EurekaServer中的服务注册表中将会存储所有可用服务节点的信�
 ## Eureka Client
 - 内置负载均衡,使用轮询的方式进行服务调用
 - 启动后默认每三十秒向Eureka Server发送心跳，如果Eureka Server在多个周期中没有收到心跳，则表示该服务离线，并将其移除，默认时间是90秒
+## Eureka Cluster（集群）
+- 多个Eureka Server相互注册组建一个集群，对外暴露一个服务注册接口
+- 实现负载均衡
+- 实现故障容错，保证某些注册中心宕机的情况下，服务仍然可以调用。
 
+## 服务集群 CAP
+Eureka属于 AP，一致性和分区容错性
 
-
+## Eureka保护机制
+- 一定时间内Eureka Server没有接收到某个微服务的心跳，Eureka Server将会注销实例（默认是90秒）
+- 当某个服务正常，但是网络发生故障（导致延时、卡顿、拥挤）时，这个实例无法和Eureka Server正常通信，则会进入"自我保护机制"
 
 
 
@@ -60,3 +68,13 @@ EurekaServer中的服务注册表中将会存储所有可用服务节点的信�
       </properties>
     </profile>
 ```
+## 关于Mac配置hosts域名代理后，通过域名无法访问的问题
+![img.png](image/hosts.png)
+
+导致原因：开启了系统代理（比如VPN）
+
+![img.png](image/clashx.png)
+
+解决办法：在网络偏好设置中放行此域名
+
+![img.png](image/network-config.png)
