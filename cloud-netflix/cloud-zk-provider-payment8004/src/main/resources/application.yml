@@ -1,0 +1,25 @@
+server:
+  port: 8004
+spring:
+  application:
+    name: cloud-zk-provider-payment
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://${database.ip}:3306/cloud?useUnicode=true&serverTimezone=Asia/Shanghai&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&connectionCollation=utf8mb4_general_ci&uerSSL=false
+    username: root
+    password: xiaojiebin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jackson:
+    default-property-inclusion: non_null
+  cloud:
+    zookeeper:
+      # \u6CE8\u518C\u4E2D\u5FC3\u5730\u5740
+      connect-string: 127.0.0.1:2181
+      # \u4F1A\u8BDD\u8D85\u65F6\u65F6\u95F4
+      session-timeout: 5000
+      # \u94FE\u63A5\u8D85\u65F6\u65F6\u95F4
+      connection-timeout: 5000
+      # \u6700\u5927\u91CD\u8BD5\u6B21\u6570
+      max-retries: 5
+database:
+  ip: localhost

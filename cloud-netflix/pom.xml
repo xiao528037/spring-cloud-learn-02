@@ -25,7 +25,8 @@
         <module>cloud-eureka-server7001</module>
         <module>cloud-consumer-order80</module>
         <module>cloud-common</module>
-
+        <module>cloud-zk-provider-payment8004</module>
+        <module>cloud-zk-consumer-order80</module>
     </modules>
     <dependencyManagement>
         <dependencies>
