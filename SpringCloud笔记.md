@@ -26,7 +26,7 @@
 6. 服务总线
    - <font color='pink'>Bus不推荐</font>
    - <font color='green'>Nacos</font>
-# Eureka
+# Eureka注册中心
 ![eureka.pn](image/eureka.png)
 - 使用Eureka Client链接到Eureka Server上并保持心跳 
 - 服务消费这通过Eureka Server获取注册的服务信息,然后通过相关信息,然后进行远程调用
@@ -48,9 +48,73 @@ Eureka属于 AP，一致性和分区容错性
 - 一定时间内Eureka Server没有接收到某个微服务的心跳，Eureka Server将会注销实例（默认是90秒）
 - 当某个服务正常，但是网络发生故障（导致延时、卡顿、拥挤）时，这个实例无法和Eureka Server正常通信，则会进入"自我保护机制"
 
+## Zookeeper注册中心
 
+1. 配置好zookeeper，启动
+
+2. 创建相关的SpringBoot服务，导入对应的包
+
+3. 配置YAML文件
+
+   1. ```yaml
+      server:
+        port: 80
+      spring:
+        application:
+          name: cloud-zk-consumer-order
+        cloud:
+          zookeeper:
+            # 注册中心地址
+            connect-string: 127.0.0.1:2181
+            # 会话超时时间
+            session-timeout: 5000
+            # 链接超时时间
+            connection-timeout: 5000
+            # 最大重试次数
+            max-retries: 5
+      ```
+
+4. 启动服务即可
+
+## Consul注册中心
+
+1. 下载consul服务端，并启动
+
+   1. ```sh
+      consul agent -dev
+      ```
+
+2. 创建springboot服务导入对应的consul client包
+
+3. 配置YAML文件
+
+   ```yaml
+   server:
+     port: 80
+   
+   spring:
+     application:
+       name: consul-consumer-order
+     cloud:
+       consul:
+         host: 127.0.0.1
+         port: 8500
+         discovery:
+           #是否注册
+           register: true
+           #健康检查路径
+           health-check-path: /actuator/health
+           #健康检查时间间隔
+           health-check-interval: 15s
+           #开启IP地址注册
+           prefer-ip-address: true
+   
+   ```
+
+   
 
 # 遇到的问题
+
 ## 1. 统一返回时，出现空JSON，没有设置GET/SET方法导致
 ## 2. JRebel不自动加载的问题
 ![img.png](image/img.png)

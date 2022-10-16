@@ -8,9 +8,9 @@
         <version>netflix-v1.0</version>
     </parent>
     <groupId>com.xiao.cloud</groupId>
-    <artifactId>cloud-consumer-order80</artifactId>
+    <artifactId>cloud-eureka-consumer-order80</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>cloud-consumer-oder80</name>
+    <name>cloud-eureka-consumer-oder80</name>
     <description>cloud-consumer-oder80</description>
     <properties>
         <java.version>1.8</java.version>

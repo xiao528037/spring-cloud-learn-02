@@ -21,12 +21,22 @@
     </properties>
 
     <modules>
-        <module>cloud-provider-payment8001</module>
+        <!--        使用eureka作为注册中心-->
+        <module>cloud-eureka-provider-payment8001</module>
+        <module>cloud-eureka-consumer-order80</module>
         <module>cloud-eureka-server7001</module>
-        <module>cloud-consumer-order80</module>
-        <module>cloud-common</module>
+        <module>cloud-eureka-server7002</module>
+
+        <!--        使用zookeeper作为注册中心-->
         <module>cloud-zk-provider-payment8004</module>
         <module>cloud-zk-consumer-order80</module>
+
+        <!--        使用consul作为注册中心-->
+        <module>cloud-consul-consumer-order80</module>
+        <module>cloud-consul-provider-payment8007</module>
+        
+        <!--        公共模块-->
+        <module>cloud-common</module>
     </modules>
     <dependencyManagement>
         <dependencies>
@@ -122,16 +132,16 @@
     </dependencyManagement>
 
 
-    	<build>
-            <plugins>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>2.5.4</version>
-                </plugin>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.5.4</version>
+            </plugin>
 
 
-            </plugins>
-        </build>
+        </plugins>
+    </build>
 
 </project>
