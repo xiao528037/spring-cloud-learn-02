@@ -1,5 +1,7 @@
 package com.xiao.cloud.cloudconsumeroder80.config;
 
+
+import com.xiao.cloud.cloudconsumeroder80.rule.CustomizeBalancer;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -15,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
  * @description
  */
 @Configuration
-@LoadBalancerClient(name = "PROVIDER-PAYMENT-SERVICE", configuration = CustomRandomLoadBalancer.class)
+@LoadBalancerClient(name = "PROVIDER-PAYMENT-SERVICE", configuration = CustomizeBalancer.class)
 public class ApplicationContextConfig {
 
     @ConditionalOnMissingBean(RestTemplate.class)
