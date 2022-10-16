@@ -6,6 +6,8 @@ server:
 
 #  spring  cloud 相关配置
 eureka:
+  instance:
+    instance-id: order80
   client:
     #表示是否将自己注册进Eurekaserver默认为true。
     register-with-eureka: true

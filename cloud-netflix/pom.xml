@@ -34,7 +34,7 @@
         <!--        使用consul作为注册中心-->
         <module>cloud-consul-consumer-order80</module>
         <module>cloud-consul-provider-payment8007</module>
-        
+
         <!--        公共模块-->
         <module>cloud-common</module>
     </modules>

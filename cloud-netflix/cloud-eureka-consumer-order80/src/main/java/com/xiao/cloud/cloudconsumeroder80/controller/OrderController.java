@@ -3,6 +3,8 @@ package com.xiao.cloud.cloudconsumeroder80.controller;
 import com.xiao.cloud.cloudcommon.common.CommonResult;
 import com.xiao.cloud.cloudcommon.entity.Payment;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -20,6 +22,8 @@ public class OrderController {
     private static final String PAYMENT_URL = "http://PROVIDER-PAYMENT-SERVICE";
     private final RestTemplate restTemplate;
 
+
+
     public OrderController(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
@@ -32,5 +36,10 @@ public class OrderController {
     @PostMapping("/add")
     public CommonResult<Payment> addPayment(Payment payment) {
         return restTemplate.postForObject(PAYMENT_URL + "/provider/payment/add", payment, CommonResult.class);
+    }
+
+    @GetMapping("/get2/{id}")
+    public CommonResult<Payment> selectById2(@PathVariable("id") Long id) {
+        return restTemplate.getForObject(PAYMENT_URL + "/provider/payment/get/" + id, CommonResult.class);
     }
 }
