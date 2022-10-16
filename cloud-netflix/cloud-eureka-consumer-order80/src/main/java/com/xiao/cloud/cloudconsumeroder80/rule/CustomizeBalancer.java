@@ -1,5 +1,6 @@
 package com.xiao.cloud.cloudconsumeroder80.rule;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.DefaultResponse;
@@ -15,6 +16,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.LongAdder;
 
 
+@Slf4j
 public class CustomizeBalancer implements ReactorServiceInstanceLoadBalancer {
     private AtomicInteger count = new AtomicInteger(0);    // 被调用的次数
     //服务个数
@@ -36,13 +38,9 @@ public class CustomizeBalancer implements ReactorServiceInstanceLoadBalancer {
 
     //自定义轮询算法
     private Response<ServiceInstance> getInstanceResponse(List<ServiceInstance> instances) {
-        int now = count.getAndIncrement();
-        return new DefaultResponse(instances.get(now % instances.size()));
-    }
 
-    public static void main(String[] args) {
-        for (int i = 0; i < 100; i++) {
-            System.out.println(i % 5);
-        }
+        int now = count.getAndIncrement();
+        log.info(" 第 >>> {} <<<请求 ", now);
+        return new DefaultResponse(instances.get(now % instances.size()));
     }
 }

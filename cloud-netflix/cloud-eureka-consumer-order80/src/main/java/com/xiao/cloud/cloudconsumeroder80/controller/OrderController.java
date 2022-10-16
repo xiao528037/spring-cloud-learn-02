@@ -38,8 +38,4 @@ public class OrderController {
         return restTemplate.postForObject(PAYMENT_URL + "/provider/payment/add", payment, CommonResult.class);
     }
 
-    @GetMapping("/get2/{id}")
-    public CommonResult<Payment> selectById2(@PathVariable("id") Long id) {
-        return restTemplate.getForObject(PAYMENT_URL + "/provider/payment/get/" + id, CommonResult.class);
-    }
 }

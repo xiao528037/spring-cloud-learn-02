@@ -11,6 +11,7 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author aloneMan
@@ -60,5 +61,11 @@ public class PaymentController {
             log.info("{} \t {} \t {} \t {}", instance.getServiceId(), instance.getHost(), instance.getPort(), instance.getUri());
         });
         return new CommonResult(0x10000L, "处理成功", discoveryClient);
+    }
+
+    @GetMapping("/getTimeout")
+    public void getTimeout() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(10);
+        log.info(">>>> {} ", "睡眠后执行了。");
     }
 }

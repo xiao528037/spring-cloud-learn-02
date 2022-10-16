@@ -26,6 +26,8 @@
         <module>cloud-eureka-consumer-order80</module>
         <module>cloud-eureka-server7001</module>
         <module>cloud-eureka-server7002</module>
+        <!--        使用openfeign负载均衡-->
+        <module>cloud-eureka-openfeign-consumer-order80</module>
 
         <!--        使用zookeeper作为注册中心-->
         <module>cloud-zk-provider-payment8004</module>
