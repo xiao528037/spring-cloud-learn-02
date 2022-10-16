@@ -21,6 +21,9 @@ feign:
     config:
       default:
         # 请求超时时间
-        readTimeout: 5000
+        read-timeout: 5000
         # 链接超时时间
-        connectTimeout: 5000
+        connect-timeout: 5000
+logging:
+  level:
+    com.xiao.cloud.cloudeurekaopenfeignconsumerorder80.service.PaymentService: debug
