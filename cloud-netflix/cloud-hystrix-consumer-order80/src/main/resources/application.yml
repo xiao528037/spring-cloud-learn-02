@@ -18,8 +18,6 @@ eureka:
 
 # openfeign相关配置
 feign:
-  hystrix:
-    enabled: true
   client:
     config:
       default:
@@ -27,6 +25,10 @@ feign:
         read-timeout: 10000
         # 链接超时时间
         connect-timeout: 10000
+  # 新版本开启openfeign 的服务降级
+  circuitbreaker:
+    enabled: true
+
 
 # open-feign日志增强
 logging:

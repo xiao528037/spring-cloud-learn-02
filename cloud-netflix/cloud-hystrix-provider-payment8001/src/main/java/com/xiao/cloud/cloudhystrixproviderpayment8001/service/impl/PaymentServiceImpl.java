@@ -57,7 +57,7 @@ public class PaymentServiceImpl implements PaymentService {
     public CommonResult timeout() {
 //        int i = 1 / 0;
         try {
-            TimeUnit.MILLISECONDS.sleep(3000);
+            TimeUnit.MILLISECONDS.sleep(6000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

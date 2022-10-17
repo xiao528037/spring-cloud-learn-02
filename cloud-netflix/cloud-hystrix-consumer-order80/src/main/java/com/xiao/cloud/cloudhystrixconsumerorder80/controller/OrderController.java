@@ -49,7 +49,23 @@ public class OrderController {
         return paymentService.getTimeout();
     }
 
-    public CommonResult testFallback(){
-         return new CommonResult(0x10001L, "consumer <<< 客户端 <<<<< 超时无法使用", null);
+
+    @GetMapping("/exception")
+    @HystrixCommand(fallbackMethod = "exceptionFallback",commandProperties = {
+            //设置超时时间
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1500")
+    })
+    public CommonResult exception() {
+        int i = 1 / 0;
+        return new CommonResult(0x10000L, "处理成功", null);
+    }
+
+    public CommonResult exceptionFallback() {
+        return new CommonResult(0x10002L, "客户端出现了异常 ", null);
+    }
+
+
+    public CommonResult testFallback() {
+        return new CommonResult(0x10001L, "consumer <<< 客户端 <<<<< 超时无法使用", null);
     }
 }
