@@ -1,5 +1,6 @@
 package com.xiao.cloud.cloudhystrixproviderpayment8001.service;
 
+import com.xiao.cloud.cloudcommon.common.CommonResult;
 import com.xiao.cloud.cloudcommon.entity.Payment;
 import com.xiao.cloud.cloudcommon.exception.CloudException;
 
@@ -18,5 +19,16 @@ public interface PaymentService {
      */
     Payment selectById(Long id) throws CloudException;
 
+    /**
+     * 添加
+     * @param payment
+     * @return
+     */
     Payment addPayment(Payment payment);
+
+    /**
+     * hystrix超时请求测试
+     * @return
+     */
+    CommonResult timeout();
 }

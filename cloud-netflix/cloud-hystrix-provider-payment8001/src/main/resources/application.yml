@@ -1,8 +1,11 @@
 server:
   port: 8001
+  tomcat:
+    threads:
+      max: 400
 spring:
   application:
-    name: provider-payment-service
+    name: hystrix-provider-payment-service
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://${database.ip}:3306/cloud?useUnicode=true&serverTimezone=Asia/Shanghai&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&connectionCollation=utf8mb4_general_ci&uerSSL=false
@@ -14,12 +17,11 @@ spring:
 database:
   ip: localhost
 
-
 #  spring  cloud 相关配置
 eureka:
   instance:
     # 在注册中心的实例名字
-    instance-id: payment8001
+    instance-id: hystrix-payment8001
     # 访问路径可以现实IP地址
     prefer-ip-address: true
     # 向注册中心发送心跳的间隔
@@ -34,3 +36,4 @@ eureka:
     #向EurekaServer中注册
     service-url:
       defaultZone: http://eureka7001.local:7001/eureka,http://eureka7002.local:7002/eureka
+

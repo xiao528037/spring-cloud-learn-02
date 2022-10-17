@@ -44,12 +44,9 @@ public class PaymentController {
     }
 
 
-
-
-
     @GetMapping("/getTimeout")
-    public void getTimeout() throws InterruptedException {
-        TimeUnit.SECONDS.sleep(10);
-        log.info(">>>> {} ", "睡眠后执行了。");
+    public CommonResult getTimeout() {
+
+        return paymentService.timeout();
     }
 }
