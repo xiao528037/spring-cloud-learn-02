@@ -68,9 +68,9 @@ Eureka属于 AP，一致性和分区容错性
 3. 配置YAML文件
 
     1. ```yaml
-      server:
+        server:
         port: 80
-      spring:
+        spring:
         application:
           name: cloud-zk-consumer-order
         cloud:
@@ -92,7 +92,7 @@ Eureka属于 AP，一致性和分区容错性
 1. 下载consul服务端，并启动
 
     1. ```sh
-      consul agent -dev
+        consul agent -dev
       ```
 
 2. 创建springboot服务导入对应的consul client包
@@ -150,6 +150,33 @@ LoadBalancer只提供了两种负载策略，其他的由开发这通过实现Re
 @LoadBalancerClient(name = "PROVIDER-PAYMENT-SERVICE", configuration = CustomRandomLoadBalancer.class)
 ```
 > name是服务提供者在注册中心的统一名字，configuration指定负载规则
+
+# HyStrix
+
+## 服务降级
+
+> 当服务出现以下情况后，返回友好提示，保证调用方不会长时间的等待或者抛出异常。
+
+需要降级处理的情况：
+
+- 程序运行异常
+- 请求超时
+- 服务熔断出发服务降级
+- 线程池/信号量打满也会导致服务降级
+
+## 服务熔断
+
+> 服务达到最大访问后，拒绝请求，并返回友好提示。防止突然大量的并发请求导致服务奔溃
+>
+> 属于兜底策略，服务降级->服务熔断->恢复调用链路
+
+## 服务限流
+
+> 按照指定的规则进行请求处理，比如：每秒只能处理多少个请求
+
+
+
+
 
 # 遇到的问题
 

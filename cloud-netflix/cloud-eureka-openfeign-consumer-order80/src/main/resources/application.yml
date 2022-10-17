@@ -24,6 +24,7 @@ feign:
         read-timeout: 5000
         # 链接超时时间
         connect-timeout: 5000
+# open-feign日志增强
 logging:
   level:
     com.xiao.cloud.cloudeurekaopenfeignconsumerorder80.service.PaymentService: debug
