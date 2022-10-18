@@ -16,6 +16,12 @@ spring:
     default-property-inclusion: non_null
 database:
   ip: localhost
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
 
 #  spring  cloud 相关配置
 eureka:
