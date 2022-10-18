@@ -14,9 +14,7 @@ import org.springframework.stereotype.Service;
  */
 @Component
 public class PaymentServiceFallback implements PaymentService {
-    public PaymentServiceFallback(){
-        System.out.println("???");
-    }
+
     @Override
     public CommonResult<Payment> getPaymentById(Long id) {
         return new CommonResult<>(0x10001L, "getPaymentById获取出现问题", null);
@@ -29,6 +27,13 @@ public class PaymentServiceFallback implements PaymentService {
 
     @Override
     public CommonResult addPayment(Payment payment) {
-         return new CommonResult<>(0x10001L, "addPayment添加出现问题", null);
+        return new CommonResult<>(0x10001L, "addPayment添加出现问题", null);
     }
+
+    @Override
+    public CommonResult circuitBreaker(Long id) {
+        return new CommonResult<>(0x10001L, "断路器接口测试开启", null);
+    }
+
+
 }

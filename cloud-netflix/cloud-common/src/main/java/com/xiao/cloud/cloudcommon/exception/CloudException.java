@@ -28,5 +28,10 @@ public class CloudException extends Exception {
         this.msg = resultCode.getMsg();
         this.resultCode = resultCode;
     }
+
+    public CloudException(Long code, String msg) {
+        this.code = code;
+        this.msg = msg;
+    }
 }
 

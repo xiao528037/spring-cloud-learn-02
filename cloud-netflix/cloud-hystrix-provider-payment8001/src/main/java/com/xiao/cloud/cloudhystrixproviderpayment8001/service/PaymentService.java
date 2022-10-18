@@ -31,4 +31,11 @@ public interface PaymentService {
      * @return
      */
     CommonResult timeout();
+
+    /**
+     * 断路器配置
+     * @param id
+     * @return 返回结果
+     */
+    public CommonResult circuitBreaker(Long id) throws CloudException;
 }

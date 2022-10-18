@@ -28,4 +28,7 @@ public interface PaymentService {
 
     @PostMapping("/hystrix/provider/payment/add")
     public CommonResult addPayment(@RequestBody Payment payment);
+
+    @GetMapping("/hystrix/provider/payment/circuit_breaker/{id}")
+    public CommonResult circuitBreaker(@PathVariable("id") Long id);
 }

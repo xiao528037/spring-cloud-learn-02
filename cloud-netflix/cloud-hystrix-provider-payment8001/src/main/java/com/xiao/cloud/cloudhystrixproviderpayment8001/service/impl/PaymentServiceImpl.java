@@ -69,4 +69,22 @@ public class PaymentServiceImpl implements PaymentService {
         return new CommonResult(0x10001L, "服务提供方超时无法使用", null);
     }
 
+    @Override
+    @HystrixCommand(fallbackMethod = "circuitBreakerFallback", commandProperties = {
+            @HystrixProperty(name = "circuitBreaker.enabled", value = "true"), //开启服务熔断功能
+            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"), //请求次数超过了峰值，将会熔断
+            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "10000"), //时间范围
+            @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60") //失败率达到多少后开启熔断功能
+    })
+    public CommonResult circuitBreaker(Long id) throws CloudException {
+        if (id < 0) {
+            throw new CloudException(0x10001L, "ID不能为负数");
+        }
+        Payment payment = paymentMapper.selectById(id);
+        return new CommonResult(0x10000L, ">>>> 处理成功", payment);
+    }
+
+    public CommonResult circuitBreakerFallback(Long id) {
+        return new CommonResult(0x10000L, id + "断路器保护 ", "请求的ID是 >>>> " + id);
+    }
 }

@@ -5,6 +5,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.xiao.cloud.cloudcommon.common.CommonResult;
 import com.xiao.cloud.cloudcommon.entity.Payment;
+import com.xiao.cloud.cloudcommon.exception.CloudException;
 import com.xiao.cloud.cloudhystrixconsumerorder80.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -64,8 +65,13 @@ public class OrderController {
         return new CommonResult(0x10002L, "客户端出现了异常 ", null);
     }
 
+    @GetMapping("/circuit_breaker/{id}")
+    public CommonResult circuitBreaker(@PathVariable("id") Long id) throws CloudException {
+        return paymentService.circuitBreaker(id);
+    }
 
     public CommonResult testFallback() {
         return new CommonResult(0x10001L, "consumer <<< 客户端 <<<<< 超时无法使用", null);
     }
+
 }

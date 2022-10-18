@@ -46,7 +46,11 @@ public class PaymentController {
 
     @GetMapping("/getTimeout")
     public CommonResult getTimeout() {
-
         return paymentService.timeout();
+    }
+
+    @GetMapping("/circuit_breaker/{id}")
+    public CommonResult circuitBreaker(@PathVariable("id") Long id) throws CloudException {
+        return paymentService.circuitBreaker(id);
     }
 }
