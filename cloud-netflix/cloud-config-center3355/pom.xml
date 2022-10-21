@@ -7,22 +7,34 @@
         <groupId>com.xiao.cloud.netflix</groupId>
         <version>netflix-v1.0</version>
     </parent>
-    <groupId>com.cloud.xiao</groupId>
-    <artifactId>clouf-config-core3344</artifactId>
+    <groupId>com.xiao.cloud</groupId>
+    <artifactId>cloud-config-center3355</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>cloud-config-core3344</name>
-    <description>cloud-config-core3344</description>
+    <name>cloud-config-center3355</name>
+    <description>cloud-config-center3355</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-server</artifactId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -40,7 +52,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.xiao.cloud</groupId>
+            <artifactId>cloud-common</artifactId>
+        </dependency>
     </dependencies>
+
 
     <build>
         <plugins>

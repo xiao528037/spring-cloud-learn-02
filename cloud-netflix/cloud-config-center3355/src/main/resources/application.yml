@@ -1,5 +1,5 @@
 server:
-  port: 3344
+  port: 3355
 
 spring:
   rabbitmq:
@@ -9,23 +9,30 @@ spring:
     password: aloneman
 
   application:
-    name: config-core-server3344
+    name: config-center-client3355
+  config:
+    import: optional:configserver:http://localhost:3344
+  #  profiles:
+  #    active: dev
   cloud:
     config:
-      server:
-        git:
-          uri: https://github.com/xiaojiebin/spring-cloud-learn-02.git
-          search-paths:
-            - cloud-netflix/config-file
-          username: 543033627@qq.com
-          password: aloneman_0629
       label: master
+      profile: prod
+      name: config
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
 
 #  spring  cloud eureka 相关配置
 eureka:
   instance:
     # 在注册中心的实例名字
-    instance-id: config-core-server
+    instance-id: config-center-client
     # 访问路径可以现实IP地址
     prefer-ip-address: true
     # 向注册中心发送心跳的间隔
@@ -40,9 +47,3 @@ eureka:
     #向EurekaServer中注册
     service-url:
       defaultZone: http://eureka7001.local:7001/eureka,http://eureka7002.local:7002/eureka
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: 'busrefresh'

@@ -45,7 +45,8 @@
         <module>cloud-gateway9527</module>
 
         <!--        配置中心-->
-        <module>cloud-config-core3344</module>
+        <module>cloud-config-center3344</module>
+        <module>cloud-config-center3355</module>
         <!--        公共模块-->
         <module>cloud-common</module>
     </modules>

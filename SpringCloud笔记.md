@@ -330,3 +330,11 @@ LoadBalancer只提供了两种负载策略，其他的由开发这通过实现Re
 导致原因：没有添加spring-boot-starter-web包
 解决办法：添加web包
 ![img.png](image/web.png)
+
+## 关于使用/actuator/bus-refresh刷新配置文件405
+![img.png](image/405.png)
+导致原因:bus总线新版本配置发生改变
+
+解决办法:将bus-refresh改成busrefresh,并且使用/actuator/busrefresh刷新既可
+![bug.png](image/bus.png)
+![img.png](image/success.png)
