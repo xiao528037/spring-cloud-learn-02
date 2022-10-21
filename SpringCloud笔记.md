@@ -127,7 +127,9 @@ Eureka属于 AP，一致性和分区容错性
 spring-cloud-netflix会默认自动轮询的负载均衡
 
 ## Ribbon
+
 ribbon在cloud-netflix-2021版本中已经弃用，导入后不能够正确的找到服务，无法使用
+
 - RoundRibbonRule 线性轮询策略
 - RetryRule 重试策略
 - WeightedResponseTimeRule 加权响应时间策略
@@ -137,18 +139,22 @@ ribbon在cloud-netflix-2021版本中已经弃用，导入后不能够正确的�
 - PredicateBasedRule 过滤线性轮询策略
 - ZoneAvoidanceRule 区域感知论序策略
 - AvailabilityFilteringRule 可用性过滤策略
+
 ## loadBalancer
 
 ### 负载模式
+
 - RandomLoadBalancer 随机策略
 - RoundRobinLoadBalancer 轮询策略
 
 LoadBalancer只提供了两种负载策略，其他的由开发这通过实现ReactorServiceInstanceLoadBalancer接口在定义负载规则
 
 ### 配置问题
+
 ```java
 @LoadBalancerClient(name = "PROVIDER-PAYMENT-SERVICE", configuration = CustomRandomLoadBalancer.class)
 ```
+
 > name是服务提供者在注册中心的统一名字，configuration指定负载规则
 
 # HyStrix
@@ -165,7 +171,7 @@ LoadBalancer只提供了两种负载策略，其他的由开发这通过实现Re
 
 - @HystrixProperty参数配置
 
-  - ```java
+    - ```java
     @HystrixCommand(fallbackMethod = "fallbackMethod", 
                     groupKey = "strGroupCommand", 
                     commandKey = "strCommand", 
@@ -242,8 +248,6 @@ LoadBalancer只提供了两种负载策略，其他的由开发这通过实现Re
     }
     
     ```
-    
-    
 
 需要降级处理的情况：
 
@@ -284,10 +288,6 @@ LoadBalancer只提供了两种负载策略，其他的由开发这通过实现Re
 
 - Filter（过滤）：指的是spring框架中GatewayFilter的实力，使用过滤器，可以在请求被路由或者之后对请求进行修改
 
-  
-
-
-
 # 遇到的问题
 
 ## 1. 统一返回时，出现空JSON，没有设置GET/SET方法导致
@@ -324,3 +324,9 @@ LoadBalancer只提供了两种负载策略，其他的由开发这通过实现Re
 解决办法：在网络偏好设置中放行此域名
 
 ![img.png](image/network-config.png)
+
+## 傻子问题：启动后直接停止服务
+
+导致原因：没有添加spring-boot-starter-web包
+解决办法：添加web包
+![img.png](image/web.png)
