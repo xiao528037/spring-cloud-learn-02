@@ -1,2 +1,2 @@
 config:
-  info: "branch dev >>>> config-prod.yml"
+  info: "master prod >>>> config-prod.yml"
