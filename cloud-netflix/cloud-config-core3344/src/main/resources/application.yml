@@ -10,7 +10,7 @@ spring:
         git:
           uri: https://github.com/xiaojiebin/spring-cloud-learn-02.git
           search-paths:
-            - spring-cloud-learn-02/cloud-netflix/config-file
+            - cloud-netflix/config-file
           username: 543033627@qq.com
           password: aloneman_0629
       label: master
