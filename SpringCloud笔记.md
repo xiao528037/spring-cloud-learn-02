@@ -157,7 +157,7 @@ LoadBalancer只提供了两种负载策略，其他的由开发这通过实现Re
 
 > 注意：2021后的Hytrix开启openfeign服务降级
 >
-> ![image-20221018011255283](/Users/xiaojiebin/IdeaProjects/spring-cloud-learn-02/image/hystrix.png)
+> ![image-20221018011255283](image/hystrix.png)
 >
 > 当服务出现以下情况后，返回友好提示，保证调用方不会长时间的等待或者抛出异常。
 
