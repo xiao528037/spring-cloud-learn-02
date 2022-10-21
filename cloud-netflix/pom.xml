@@ -42,7 +42,10 @@
         <module>cloud-hystrix-provider-payment8001</module>
 
         <!--        网关-->
-        <module>cloud-gateway7527</module>
+        <module>cloud-gateway9527</module>
+
+        <!--        配置中心-->
+        <module>cloud-config-core3344</module>
         <!--        公共模块-->
         <module>cloud-common</module>
     </modules>
