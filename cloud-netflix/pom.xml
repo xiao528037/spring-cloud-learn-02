@@ -47,6 +47,9 @@
         <!--        配置中心-->
         <module>cloud-config-center3344</module>
         <module>cloud-config-center3355</module>
+
+        <!--        stream 用于消息中间间解偶-->
+        <module>cloud-stream-rabbit-provider8801</module>
         <!--        公共模块-->
         <module>cloud-common</module>
     </modules>
