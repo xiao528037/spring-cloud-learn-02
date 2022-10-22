@@ -3,12 +3,6 @@ server:
 spring:
   application:
     name: cloud-stream-provider
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: aloneman
-    password: aloneman
-    virtual-host: learn_1
   cloud:
     stream:
       bindings:
@@ -16,11 +10,24 @@ spring:
         myBroadcast-out-0: # 生产者绑定名称，myBroadcast是自定义的绑定名称，out代表生产者，0是固定写法
           destination: my-broadcast-topic # 对应的真实exchange
           content-type: application/json
-
+          binder: defaultRabbit
         # 分组消息
         myGroup-out-0:
           destination: my-group-topic
           content-type: application/json
+          binder: defaultRabbit
+      binders:
+        defaultRabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: aloneman
+                password: aloneman
+                virtual-host: learn_1
+
 
 
 

@@ -25,6 +25,6 @@ public class MessageConsumer {
 
     @Bean
     public Consumer<String> myGroup() {
-        return message -> log.info("接收到的分组信息是 >>> {} ", message);
+        return message -> log.info("接收到的分组信息是 >>> {} ", JSON.parseObject(message));
     }
 }
