@@ -3,6 +3,11 @@ server:
 spring:
   application:
     name: provider-payment-service
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://${database.ip}:3306/cloud?useUnicode=true&serverTimezone=Asia/Shanghai&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&connectionCollation=utf8mb4_general_ci&uerSSL=false

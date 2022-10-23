@@ -38,4 +38,8 @@ public class OrderController {
         return restTemplate.postForObject(PAYMENT_URL + "/provider/payment/add", payment, CommonResult.class);
     }
 
+    @GetMapping("/payment/zipkin")
+    public String paymentZipkin() {
+        return "hi ,i'am paymentzipkin server fall back，welcome to here, O(∩_∩)O哈哈~";
+    }
 }

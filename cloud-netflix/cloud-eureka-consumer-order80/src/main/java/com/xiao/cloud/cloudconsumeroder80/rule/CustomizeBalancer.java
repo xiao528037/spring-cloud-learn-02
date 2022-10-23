@@ -18,27 +18,34 @@ import java.util.concurrent.atomic.LongAdder;
 
 @Slf4j
 public class CustomizeBalancer implements ReactorServiceInstanceLoadBalancer {
-    private AtomicInteger count = new AtomicInteger(0);    // 被调用的次数
-    //服务个数
+    /**
+     * 调用次数
+     */
+    private AtomicInteger count = new AtomicInteger(0);
+    /**
+     * 服务个数
+     */
     private Integer totalServer = 0;
-    // 服务列表
+    /**
+     * 服务列表
+     */
     private final ObjectProvider<ServiceInstanceListSupplier> serviceInstanceListSupplierProvider;
-    private final Mono<Response<ServiceInstance>> responseMono;
+    private Mono<Response<ServiceInstance>> responseMono;
 
     public CustomizeBalancer(ObjectProvider<ServiceInstanceListSupplier> serviceInstanceListSupplierProvider) {
         this.serviceInstanceListSupplierProvider = serviceInstanceListSupplierProvider;
-        this.responseMono = serviceInstanceListSupplierProvider.getIfAvailable().get().next().map(this::getInstanceResponse);
     }
 
     @Override
     public Mono<Response<ServiceInstance>> choose(Request request) {
-        return responseMono;
+        return serviceInstanceListSupplierProvider.getIfAvailable().get().next().map(this::getInstanceResponse);
     }
 
 
-    //自定义轮询算法
+    /**
+     * 自定义轮询算法
+     */
     private Response<ServiceInstance> getInstanceResponse(List<ServiceInstance> instances) {
-
         int now = count.getAndIncrement();
         log.info(" 第 >>> {} <<<请求 ", now);
         return new DefaultResponse(instances.get(now % instances.size()));
