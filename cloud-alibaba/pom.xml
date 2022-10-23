@@ -11,6 +11,8 @@
     <modules>
         <!--        服务提供者-->
         <module>cloud-alibaba-provider-payment9001</module>
+        <!--        服务消费者-->
+        <module>cloud-alibaba-consumer-order80</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
@@ -60,7 +62,16 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>3.1.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+                <version>3.1.4</version>
+            </dependency>
             <!--            数据库相关-->
             <dependency>
                 <groupId>mysql</groupId>

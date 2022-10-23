@@ -1,0 +1,23 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: nacos-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+#        group: order_group
+    loadbalancer:
+      nacos:
+        enabled: true
+
+provider:
+  name: http://nacos-provider-payment
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

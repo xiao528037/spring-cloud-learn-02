@@ -172,11 +172,11 @@ LoadBalancer只提供了两种负载策略，其他的由开发这通过实现Re
 - @HystrixProperty参数配置
 
     - ```java
-    @HystrixCommand(fallbackMethod = "fallbackMethod", 
-                    groupKey = "strGroupCommand", 
-                    commandKey = "strCommand", 
-                    threadPoolKey = "strThreadPool",
-                    
+  @HystrixCommand(fallbackMethod = "fallbackMethod",
+  groupKey = "strGroupCommand",
+  commandKey = "strCommand",
+  threadPoolKey = "strThreadPool",
+
                     commandProperties = {
                         // 设置隔离策略，THREAD 表示线程池 SEMAPHORE：信号池隔离
                         @HystrixProperty(name = "execution.isolation.strategy", value = "THREAD"),
@@ -243,10 +243,10 @@ LoadBalancer只提供了两种负载策略，其他的由开发这通过实现Re
                         @HystrixProperty(name = "queueSizeRejectionThreshold", value = "5"),
                     }
                    )
-    public String doSomething() {
-    	...
-    }
-    
+  public String doSomething() {
+  ...
+  }
+
     ```
 
 需要降级处理的情况：
@@ -332,9 +332,16 @@ LoadBalancer只提供了两种负载策略，其他的由开发这通过实现Re
 ![img.png](image/web.png)
 
 ## 关于使用/actuator/bus-refresh刷新配置文件405
+
 ![img.png](image/405.png)
 导致原因:bus总线新版本配置发生改变
 
 解决办法:将bus-refresh改成busrefresh,并且使用/actuator/busrefresh刷新既可
 ![bug.png](image/bus.png)
 ![img.png](image/success.png)
+
+## spring cloud alibaba+openfeign找不到服务的问题
+
+导致原因：provider和consumer的分组不同，导致无法访问
+
+解决办法：将二者设置成同一个分组
