@@ -1,27 +1,3 @@
-server:
-  port: 9001
-
 spring:
-  application:
-    name: nacos-provider
-  cloud:
-    nacos:
-      discovery:
-        server-addr: localhost:8848
-#        group: payment_group
-  datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://${database.ip}:3306/cloud?useUnicode=true&serverTimezone=Asia/Shanghai&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&connectionCollation=utf8mb4_general_ci&uerSSL=false
-    username: root
-    password: xiaojiebin
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  jackson:
-    default-property-inclusion: non_null
-database:
-  ip: localhost
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
+  profiles:
+    active: dev

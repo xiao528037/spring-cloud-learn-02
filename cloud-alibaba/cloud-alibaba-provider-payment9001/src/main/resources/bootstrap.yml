@@ -1,0 +1,12 @@
+
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.3.30:8848
+        group: provider-payment
+        prefix: provider
+        file-extension: yaml
+        namespace: 54242b61-8813-4956-a63c-61afa3507724
+server:
+  port: 9001
