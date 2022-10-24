@@ -345,3 +345,12 @@ LoadBalancer只提供了两种负载策略，其他的由开发这通过实现Re
 导致原因：provider和consumer的分组不同，导致无法访问
 
 解决办法：将二者设置成同一个分组
+
+
+## nacos中心启动报错
+```java
+org.springframework.cloud.commons.ConfigDataMissingEnvironmentPostProcessor$ImportException: No spring.config.import set
+```
+![img.png](image/nacos-config-error.png)
+导致原因：Spring Cloud 新版本默认将 Bootstrap 禁用
+解决办法：添加spring-cloud-starter-bootstrap依赖即可

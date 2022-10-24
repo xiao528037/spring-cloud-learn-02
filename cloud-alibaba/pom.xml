@@ -13,6 +13,11 @@
         <module>cloud-alibaba-provider-payment9001</module>
         <!--        服务消费者-->
         <module>cloud-alibaba-consumer-order80</module>
+
+        <!--        配置中心-->
+        <module>cloud-alibaba-config-client3377</module>
+        <!--        服务管理-->
+        <module>cloud-alibaba-sentinel-service8401</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
@@ -71,6 +76,16 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-loadbalancer</artifactId>
                 <version>3.1.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-bootstrap</artifactId>
+                <version>3.1.4</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-sentinel</artifactId>
+                <version>2.2.0.RELEASE</version>
             </dependency>
             <!--            数据库相关-->
             <dependency>
