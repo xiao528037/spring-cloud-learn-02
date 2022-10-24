@@ -1,0 +1,15 @@
+server:
+  port: 3377
+spring:
+  application:
+    name: nacos-config
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+      config:
+        server-addr: localhost:8848
+        file-extension: yaml
+        group: two-group
+        prefix: learn-config
+        namespace: 7e9835f5-b10a-4ae2-98dc-ddc6c067d6f9
