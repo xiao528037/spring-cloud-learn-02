@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        file-extension: yaml
+        prefix: sentinel
+        namespace: 54242b61-8813-4956-a63c-61afa3507724
+        group: sentinel-group
+
+
+
+
