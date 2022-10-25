@@ -1,4 +1,4 @@
-package com.xiao.alibaba.cloud.cloudalibabaproviderpayment8001.service;
+package com.xiao.alibaba.cloud.cloudalibabaproviderpayment9001.service;
 
 import com.xiao.cloud.cloudcommon.common.CommonResult;
 import com.xiao.cloud.cloudcommon.entity.Payment;
@@ -21,6 +21,7 @@ public interface PaymentService {
 
     /**
      * 添加
+     *
      * @param payment
      * @return
      */
@@ -28,14 +29,23 @@ public interface PaymentService {
 
     /**
      * hystrix超时请求测试
+     *
      * @return
      */
     CommonResult timeout();
 
     /**
      * 断路器配置
+     *
      * @param id
      * @return 返回结果
      */
     public CommonResult circuitBreaker(Long id) throws CloudException;
+
+    /**
+     * 模拟请求出现异常
+     *
+     * @return
+     */
+    CommonResult exception();
 }

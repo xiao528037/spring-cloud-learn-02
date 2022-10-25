@@ -1,4 +1,4 @@
-package com.xiao.alibaba.cloud.cloudalibabaproviderpayment8001.mapper;
+package com.xiao.alibaba.cloud.cloudalibabaproviderpayment9001.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.xiao.cloud.cloudcommon.entity.Payment;

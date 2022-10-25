@@ -20,6 +20,9 @@ public interface ConsumerService {
     @GetMapping("/provider/payment/get/{id}")
     public CommonResult getPaymentById(@PathVariable("id") Long id);
 
-    @GetMapping("/getTimeout")
+    @GetMapping("/provider/payment/getTimeout")
     public CommonResult getTimeout();
+
+    @GetMapping("/provider/payment/exception")
+    public CommonResult exception();
 }

@@ -1,4 +1,4 @@
-package com.xiao.alibaba.cloudalibabasentinelservice8401.exception;
+package com.xiao.alibaba.cloud.cloudalibabaproviderpayment9001.exception;
 
 import com.alibaba.csp.sentinel.adapter.spring.webmvc.callback.BlockExceptionHandler;
 import com.alibaba.csp.sentinel.slots.block.BlockException;

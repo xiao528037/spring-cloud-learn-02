@@ -1,6 +1,6 @@
-package com.xiao.alibaba.cloud.cloudalibabaproviderpayment8001.controller;
+package com.xiao.alibaba.cloud.cloudalibabaproviderpayment9001.controller;
 
-import com.xiao.alibaba.cloud.cloudalibabaproviderpayment8001.service.PaymentService;
+import com.xiao.alibaba.cloud.cloudalibabaproviderpayment9001.service.PaymentService;
 import com.xiao.cloud.cloudcommon.common.CommonResult;
 import com.xiao.cloud.cloudcommon.entity.Payment;
 import com.xiao.cloud.cloudcommon.exception.CloudException;
@@ -46,6 +46,11 @@ public class PaymentController {
     @GetMapping("/getTimeout")
     public CommonResult getTimeout() {
         return paymentService.timeout();
+    }
+
+    @GetMapping("/exception")
+    public CommonResult exception() {
+        return paymentService.exception();
     }
 
     @GetMapping("/circuit_breaker/{id}")

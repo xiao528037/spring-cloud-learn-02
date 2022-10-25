@@ -1,9 +1,9 @@
-package com.xiao.alibaba.cloud.cloudalibabaproviderpayment8001.service.impl;
+package com.xiao.alibaba.cloud.cloudalibabaproviderpayment9001.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 
-import com.xiao.alibaba.cloud.cloudalibabaproviderpayment8001.mapper.PaymentMapper;
-import com.xiao.alibaba.cloud.cloudalibabaproviderpayment8001.service.PaymentService;
+import com.xiao.alibaba.cloud.cloudalibabaproviderpayment9001.mapper.PaymentMapper;
+import com.xiao.alibaba.cloud.cloudalibabaproviderpayment9001.service.PaymentService;
 import com.xiao.cloud.cloudcommon.common.CommonResult;
 import com.xiao.cloud.cloudcommon.common.ResultCode;
 import com.xiao.cloud.cloudcommon.entity.Payment;
@@ -50,11 +50,11 @@ public class PaymentServiceImpl implements PaymentService {
     public CommonResult timeout() {
 //        int i = 1 / 0;
         try {
-            TimeUnit.MILLISECONDS.sleep(6000);
+            TimeUnit.MILLISECONDS.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        return new CommonResult(0x10000L, " >>> 处理成功", null);
+        return new CommonResult(0x10000L, " >>> 处理成功", "延迟请求成功");
     }
 
     public CommonResult testFallback() {
@@ -73,5 +73,11 @@ public class PaymentServiceImpl implements PaymentService {
 
     public CommonResult circuitBreakerFallback(Long id) {
         return new CommonResult(0x10000L, id + "断路器保护 ", "请求的ID是 >>>> " + id);
+    }
+
+    @Override
+    public CommonResult exception() {
+        int i = 1 / 0;
+        return new CommonResult(0x10000L, ">>>> 处理成功", "异常请求成功");
     }
 }
