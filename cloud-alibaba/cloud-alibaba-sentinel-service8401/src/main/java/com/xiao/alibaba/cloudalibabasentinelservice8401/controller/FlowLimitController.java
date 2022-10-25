@@ -63,6 +63,7 @@ public class FlowLimitController {
     @GetMapping("/HotKey")
     @SentinelResource(value = HOT_KEY, blockHandlerClass = CustomizeBlockHandler.class, blockHandler = "handlerMethod")
     public CommonResult hotKey(@RequestParam(name = "p1", required = false) String p1, @RequestParam(name = "p2", required = false) String p2) {
+
         return new CommonResult(0x00001L, "请求成功", "hot key request success > p1: " + p1 + " > p2 :" + p2);
     }
 
