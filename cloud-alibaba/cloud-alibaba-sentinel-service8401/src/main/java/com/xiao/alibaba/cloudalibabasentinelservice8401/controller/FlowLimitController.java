@@ -61,20 +61,16 @@ public class FlowLimitController {
      * @return
      */
     @GetMapping("/HotKey")
-    @SentinelResource(value = HOT_KEY, blockHandlerClass = CustomizeBlockHandler.class, blockHandler = "handlerMethod")
+    @SentinelResource(value = HOT_KEY, blockHandlerClass = CustomizeBlockHandler.class, blockHandler = "handlerMethod",
+            fallbackClass = CustomizeBlockHandler.class, fallback = "fallbackMethod")
     public CommonResult hotKey(@RequestParam(name = "p1", required = false) String p1, @RequestParam(name = "p2", required = false) String p2) {
-
+        int i = 1 / 0;
         return new CommonResult(0x00001L, "请求成功", "hot key request success > p1: " + p1 + " > p2 :" + p2);
     }
 
 
     private final static String HOT_KEY = "testHotKey";
 
-    /**
-     * <h1>spring 初始化方法</h1>
-     * <h1>@PostConstruct是Spring带的，当前这个bean在被spring容器创建的时候，就会自动的调用
-     * 被@PostConstruct这个注解修饰的方法进行初始化</h1>
-     */
 
     @PostConstruct
     public void init() {

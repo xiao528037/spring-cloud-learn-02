@@ -1,9 +1,8 @@
-
 spring:
   cloud:
     nacos:
       config:
-        server-addr: 192.168.3.30:8848
+        server-addr: localhost:8848
         group: provider-payment
         prefix: provider
         file-extension: yaml
