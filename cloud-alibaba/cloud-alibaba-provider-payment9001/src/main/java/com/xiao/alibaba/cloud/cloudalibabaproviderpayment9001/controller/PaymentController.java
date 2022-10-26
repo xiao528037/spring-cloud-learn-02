@@ -1,5 +1,7 @@
 package com.xiao.alibaba.cloud.cloudalibabaproviderpayment9001.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.xiao.alibaba.cloud.cloudalibabaproviderpayment9001.service.PaymentService;
 import com.xiao.cloud.cloudcommon.common.CommonResult;
 import com.xiao.cloud.cloudcommon.entity.Payment;
@@ -56,5 +58,16 @@ public class PaymentController {
     @GetMapping("/circuit_breaker/{id}")
     public CommonResult circuitBreaker(@PathVariable("id") Long id) throws CloudException {
         return paymentService.circuitBreaker(id);
+    }
+
+    @GetMapping("/sentinel/{id}")
+    @SentinelResource(value = "TEST_SENTINEL", blockHandler = "sentinel")
+    public CommonResult testSentinel(@PathVariable("id") Long id) throws CloudException {
+        Payment payment = paymentService.selectById(id);
+        return new CommonResult(0x10000L, serverPort + " >>> 处理成功", payment);
+    }
+
+    public CommonResult sentinel(Long id, BlockException exception) {
+        return new CommonResult(0x10001L, "接口被限流辣～", "限流了");
     }
 }

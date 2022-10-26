@@ -68,6 +68,10 @@ public class FlowLimitController {
         return new CommonResult(0x00001L, "请求成功", "hot key request success > p1: " + p1 + " > p2 :" + p2);
     }
 
+    @GetMapping("/sentinel/{id}")
+    public CommonResult sentinel(@PathVariable("id") Long id) {
+        return service.sentinel(id);
+    }
 
     private final static String HOT_KEY = "testHotKey";
 

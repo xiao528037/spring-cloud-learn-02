@@ -7,7 +7,9 @@ import com.alibaba.csp.sentinel.slots.block.degrade.DegradeException;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowException;
 import com.alibaba.csp.sentinel.slots.block.flow.param.ParamFlowException;
 import com.alibaba.csp.sentinel.slots.system.SystemBlockException;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.xiao.cloud.cloudcommon.common.CommonResult;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -29,23 +31,19 @@ public class MyExceptionHandlerPage implements BlockExceptionHandler {
     @Override
     public void handle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, BlockException e) throws Exception {
         JSONObject json = new JSONObject();
+        CommonResult commonResult = null;
         if (e instanceof FlowException) {
-            json.put("code", -1);
-            json.put("message", port + "接口限流");
+            commonResult = new CommonResult(0x10001L, port + "接口限流", null);
         } else if (e instanceof DegradeException) {
-            json.put("code", -2);
-            json.put("message", port + "接口降级");
+            commonResult = new CommonResult(0x10002L, port + "接口降级", null);
         } else if (e instanceof ParamFlowException) {
-            json.put("code", -3);
-            json.put("message", port + "参数限流");
+            commonResult = new CommonResult(0x10003L, port + "参数限流", null);
         } else if (e instanceof AuthorityException) {
-            json.put("code", -4);
-            json.put("message", port + "授权异常");
+            commonResult = new CommonResult(0x10003L, port + "授权异常", null);
         } else if (e instanceof SystemBlockException) {
-            json.put("code", -5);
-            json.put("message", port + "系统负载异常");
+            commonResult = new CommonResult(0x10003L, port + "系统负载异常", null);
         }
         httpServletResponse.setContentType("application/json;charset=utf-8");
-        httpServletResponse.getWriter().write(json.toJSONString());
+        httpServletResponse.getWriter().write(JSON.toJSONString(commonResult));
     }
 }

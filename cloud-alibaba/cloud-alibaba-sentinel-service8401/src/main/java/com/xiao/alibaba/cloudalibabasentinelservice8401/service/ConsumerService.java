@@ -1,5 +1,6 @@
 package com.xiao.alibaba.cloudalibabasentinelservice8401.service;
 
+import com.xiao.alibaba.cloudalibabasentinelservice8401.exception.CustomizeFallbackService;
 import com.xiao.cloud.cloudcommon.common.CommonResult;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  */
 
 @Service
-@FeignClient(value = "nacos-provider")
+@FeignClient(value = "nacos-provider", fallback = CustomizeFallbackService.class)
 public interface ConsumerService {
 
     @GetMapping("/provider/payment/get/{id}")
@@ -25,4 +26,7 @@ public interface ConsumerService {
 
     @GetMapping("/provider/payment/exception")
     public CommonResult exception();
+
+    @GetMapping("/provider/payment/sentinel/{id}")
+    public CommonResult sentinel(@PathVariable("id") Long id);
 }
