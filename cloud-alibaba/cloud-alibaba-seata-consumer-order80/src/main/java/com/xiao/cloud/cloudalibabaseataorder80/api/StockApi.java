@@ -1,10 +1,11 @@
-package com.xiao.cloud.cloudcommon.api;
+package com.xiao.cloud.cloudalibabaseataorder80.api;
 
 import com.xiao.cloud.cloudcommon.common.CommonResult;
 import com.xiao.cloud.cloudcommon.entity.PhoneStock;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author aloneMan
@@ -12,7 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
  * @createTime 2022-10-30 12:58:31
  * @description
  */
-@FeignClient(path = "/stock")
+
+@FeignClient(name = "provider-stock", path = "/stock")
 public interface StockApi {
 
     @PostMapping("/add")
@@ -20,4 +22,10 @@ public interface StockApi {
 
     @DeleteMapping("/delete")
     public CommonResult<PhoneStock> delete(Long id);
+
+    @GetMapping("/get/{id}")
+    public CommonResult<PhoneStock> get(@PathVariable("id") Long id);
+
+    @PostMapping("/update")
+    public CommonResult<Boolean> update(@RequestBody PhoneStock phoneStock);
 }
